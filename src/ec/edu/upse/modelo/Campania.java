@@ -50,10 +50,33 @@ public class Campania implements Serializable {
 	@OneToMany(mappedBy="campania",cascade = CascadeType.ALL)
 	private List<RegistroDonacion> registroDonacions;
 
-	//bi-directional many-to-one association to PermisoCampania
-	@OneToMany(mappedBy="campania")
-	private List<PermisoCampania> permisoCampania;
+	//bi-directional many-to-one association to RegistroDonacion
+	@OneToMany(mappedBy="campania",cascade = CascadeType.ALL)
+	private List<SegUsuario> usuarios;
 
+	public List<SegUsuario> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(List<SegUsuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public SegUsuario addUsuario(SegUsuario usuario) {
+		getUsuarios().add(usuario);
+		usuario.setCampania(this);
+
+		return usuario;
+	}
+
+	public SegUsuario removeUsuario(SegUsuario usuario) {
+		getUsuarios().remove(usuario);
+		usuario.setCampania(null);
+
+		return usuario;
+	}
+	
+	
+	
 	public Campania() {
 	}
 
@@ -134,26 +157,5 @@ public class Campania implements Serializable {
 
 	public void setNombreCampania(String nombreCampania) {
 		this.nombreCampania = nombreCampania;
-	}
-
-	public List<PermisoCampania> getPermisoCampanias() {
-		return this.permisoCampania;
-	}
-
-	public void setPermisoCampania(List<PermisoCampania> permisoCampania) {
-		this.permisoCampania = permisoCampania;
-	}
-
-	public PermisoCampania addPermisoCampania(PermisoCampania permisoCampania) {
-		getPermisoCampanias().add(permisoCampania);
-		permisoCampania.setCampania(this);
-
-		return permisoCampania;
-	}
-
-	public PermisoCampania removePermisoCampania(PermisoCampania permisoCampania) {
-		getPermisoCampanias().remove(permisoCampania);
-		permisoCampania.setCampania(null);
-		return permisoCampania;
 	}
 }

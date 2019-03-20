@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.crypto.Cipher;
 
@@ -14,6 +16,9 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
 
 public class ControllerHelper {
+	private static final String EMAIL_PATTERN = 
+			"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+					+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 	public String encriptar(String input) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
@@ -73,5 +78,17 @@ public class ControllerHelper {
 			System.out.println("La Cédula ingresada es Incorrecta");
 		}
 		return cedulaCorrecta;
+	}
+	public static boolean validarEmail(String email) {
+		try{
+			// Compiles the given regular expression into a pattern.
+			Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+			// Match the given input against this pattern
+			Matcher matcher = pattern.matcher(email);
+			return matcher.matches();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

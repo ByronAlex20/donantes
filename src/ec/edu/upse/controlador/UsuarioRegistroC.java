@@ -22,6 +22,8 @@ import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Window;
 import org.zkoss.zul.Messagebox.ClickEvent;
 
+import ec.edu.upse.modelo.Campania;
+import ec.edu.upse.modelo.CampaniaDAO;
 import ec.edu.upse.modelo.Parametrica;
 import ec.edu.upse.modelo.Persona;
 import ec.edu.upse.modelo.SegPerfil;
@@ -32,21 +34,25 @@ import ec.edu.upse.util.ControllerHelper;
 
 public class UsuarioRegistroC extends SelectorComposer<Component>{
 	@Wire private Window winRegistroUsuario;
-	
+
 	@Wire private Textbox txtCedula;
+	@Wire private Textbox txtCorreo;
 	@Wire private Checkbox chkEstado;
 	@Wire private Textbox txtTelefono;
 	@Wire private Textbox txtNombres;
 	@Wire private Textbox txtApellidos;
 	@Wire private Textbox txtUsuario;
 	@Wire private Combobox cboPerfil;
+	@Wire private Combobox cboCampania;
 	@Wire private Textbox txtClave;
 	@Wire private Textbox txtObservacion;
-	
+
 	SegUsuario usuario;
 	SegUsuarioDAO usuarioDAO = new SegUsuarioDAO();
 	SegPerfilDAO perfilDAO = new SegPerfilDAO();
 	ControllerHelper helper = new ControllerHelper();
+	CampaniaDAO campaniaDAO = new CampaniaDAO();
+
 	@Override
 	public void doAfterCompose(Component comp) throws Exception {
 		// TODO Auto-generated method stub
@@ -61,7 +67,7 @@ public class UsuarioRegistroC extends SelectorComposer<Component>{
 				limpiar();
 				return;
 			}
-			
+
 			List<SegUsuario> usuarioLista = usuarioDAO.getListaUsuario(txtCedula.getValue());
 			if(usuarioLista.size() != 0) {
 				usuario = new SegUsuario();
@@ -96,10 +102,13 @@ public class UsuarioRegistroC extends SelectorComposer<Component>{
 			txtApellidos.setText(usuarioRecuperado.getApellidos());
 			txtUsuario.setText(usuarioRecuperado.getUsuario());
 			cboPerfil.setText(usuarioRecuperado.getSegPerfil().getNombre());
+			if(usuarioRecuperado.getCampania() != null)
+				if(usuarioRecuperado.getCampania().getEstadoCampania().equals("EN PROCESO"))	
+					cboCampania.setText(usuarioRecuperado.getCampania().getNombreCampania() + " - " + usuarioRecuperado.getCampania().getLugar());
 			txtClave.setText("");
 			txtObservacion.setText(usuarioRecuperado.getObservacion());
-			
-			
+			txtCorreo.setText(usuarioRecuperado.getCorreo());
+
 			usuario = usuarioRecuperado;
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -111,8 +120,11 @@ public class UsuarioRegistroC extends SelectorComposer<Component>{
 		usuario.setNombres(txtNombres.getText());
 		usuario.setApellidos(txtApellidos.getText());
 		usuario.setUsuario(txtUsuario.getText());
+		usuario.setCorreo(txtCorreo.getText());
 		SegPerfil pPerfil = (SegPerfil)cboPerfil.getSelectedItem().getValue();
+		Campania pCampania = (Campania)cboCampania.getSelectedItem().getValue();
 		usuario.setSegPerfil(pPerfil);
+		usuario.setCampania(pCampania);
 		usuario.setClave(helper.encriptar(txtClave.getText()));
 		usuario.setClaveDesencriptada(txtClave.getText());
 		usuario.setObservacion(txtObservacion.getText());
@@ -120,7 +132,7 @@ public class UsuarioRegistroC extends SelectorComposer<Component>{
 			usuario.setEstado("A");
 		else
 			usuario.setEstado("I");
-		
+
 	}
 	@Listen("onClick=#btnLimpiar")
 	public void nuevo() {
@@ -129,27 +141,27 @@ public class UsuarioRegistroC extends SelectorComposer<Component>{
 	}
 	@Listen("onClick=#btnGrabar")
 	public void grabar() {
-		
+		if(validarDatos() == false) {
+			return;
+		}
 		EventListener<ClickEvent> clickListener = new EventListener<Messagebox.ClickEvent>() {
-            public void onEvent(ClickEvent event) throws Exception {
-                if(Messagebox.Button.YES.equals(event.getButton())) {
-                	if(validarDatos() == true) {
-                		copiarDatos();
-                		usuarioDAO.getEntityManager().getTransaction().begin();
-                		if(usuario.getIdUsuario() != null)//modifica
-                			usuarioDAO.getEntityManager().merge(usuario);
-                		else
-                			usuarioDAO.getEntityManager().persist(usuario);
-                		usuarioDAO.getEntityManager().getTransaction().commit();
-                		Clients.showNotification("Datos Grabados con exito");
-                		txtCedula.setText("");
-                		limpiar();
-                	}
-                }
-            }
+			public void onEvent(ClickEvent event) throws Exception {
+				if(Messagebox.Button.YES.equals(event.getButton())) {
+					copiarDatos();
+					usuarioDAO.getEntityManager().getTransaction().begin();
+					if(usuario.getIdUsuario() != null)//modifica
+						usuarioDAO.getEntityManager().merge(usuario);
+					else
+						usuarioDAO.getEntityManager().persist(usuario);
+					usuarioDAO.getEntityManager().getTransaction().commit();
+					Clients.showNotification("Datos Grabados con exito");
+					txtCedula.setText("");
+					limpiar();
+				}
+			}
 		};
 		Messagebox.show("Desea Grabar los Datos?", "Confirmación", new Messagebox.Button[]{
-                Messagebox.Button.YES, Messagebox.Button.NO }, Messagebox.QUESTION, clickListener);
+				Messagebox.Button.YES, Messagebox.Button.NO }, Messagebox.QUESTION, clickListener);
 	}
 	private boolean validarDatos() {
 		try {
@@ -167,6 +179,16 @@ public class UsuarioRegistroC extends SelectorComposer<Component>{
 			}
 			if(txtClave.getText() == "") {
 				Clients.showNotification("Campo obligatorio: clave","info",txtClave,"end_center",2000);
+				return false;
+			}
+			if(txtCorreo.getText() != "") {
+				if(!ControllerHelper.validarEmail(txtCorreo.getText())) {
+					Clients.showNotification("Correo electrónico no válido","info",txtCorreo,"end_center",2000);
+					return false;
+				}
+			}
+			if(cboPerfil.getSelectedItem().getValue() == null) {
+				Clients.showNotification("Campo obligatorio: perfil","info",cboPerfil,"end_center",2000);
 				return false;
 			}
 			int idUsuario;
@@ -187,17 +209,22 @@ public class UsuarioRegistroC extends SelectorComposer<Component>{
 	public List<SegPerfil> getPerfiles(){
 		return perfilDAO.getListaPerfiles();
 	}
+	public List<Campania> getListaCampania(){
+		return campaniaDAO.getListaCampania();
+	}
 	private void limpiar() {
 		txtTelefono.setText("");
 		txtNombres.setText("");
 		txtApellidos.setText("");
 		txtUsuario.setText("");
+		txtCorreo.setText("");
 		cboPerfil.setSelectedIndex(-1);
+		cboCampania.setSelectedIndex(-1);
 		txtClave.setText("");
 		txtObservacion.setText("");
 		usuario = null;
 	}
 	private void showNotify(String msg, Component ref) {
-        Clients.showNotification(msg, "info", ref, "end_center", 2000);
-    }
+		Clients.showNotification(msg, "info", ref, "end_center", 2000);
+	}
 }

@@ -68,6 +68,24 @@
 							<cell>
 								<textbox id="txtClave" width=" 90%" name="password" type="password" />
 							</cell>
+							<cell sclass="row-title">Correo:</cell>
+							<cell>
+								<textbox id="txtCorreo" width=" 90%"/>
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title">
+								Campaña a participar:
+							</cell>
+							<cell colspan="3">
+								<combobox id="cboCampania" width="90%"
+									model="@{winRegistroUsuario$composer.listaCampania}" readonly="true">
+									<template name="model">
+										<comboitem
+											label="${each.nombreCampania} - ${each.lugar}" />
+									</template>
+								</combobox>
+							</cell>
 						</row>
 						<row>
 							<cell sclass="row-title">Observacion :</cell>

@@ -28,12 +28,6 @@ import ec.edu.upse.modelo.SegUsuarioDAO;
  * security.
  */
 public class ServicioAutenticacion implements UserDetailsService {
-
-	/**
-	 * Este metodo es invocado en el momento de la autenticacion paraa recuperar 
-	 * los datos del usuario.
-	 * 
-	 */
 	SegAuditoriaDAO auditoriaDAO = new SegAuditoriaDAO();
 	@Override
 	public UserDetails loadUserByUsername(String nombreUsuario) throws UsernameNotFoundException {
@@ -45,7 +39,7 @@ public class ServicioAutenticacion implements UserDetailsService {
 			List<GrantedAuthority> privilegios; 
 			usuario = usuarioDAO.getUsuario(nombreUsuario);
 			privilegios = obtienePrivilegios(usuario.getSegPerfil());
-			
+			//para la auditoria.. grabar el usuario q se ha logueado
 			SegAuditoria auditoria = new SegAuditoria();
 			auditoria.setEstado("A");
 			Date date = new Date();
@@ -58,9 +52,16 @@ public class ServicioAutenticacion implements UserDetailsService {
 			auditoriaDAO.getEntityManager().persist(auditoria);
 			auditoriaDAO.getEntityManager().getTransaction().commit();
 			Context.getInstance().setUsuarioLogeado(usuario);
+			
+			//verificar si el usuario esta en una campaña.. solo deja pasar cuando el usuario es adminstrador 
+			if(usuario.getSegPerfil().getDescripcion().equals("ROL_ADMINISTRADOR")) 
+				usuarioSpring = new User(usuario.getUsuario(), usuario.getClave(), privilegios);
+			else if(usuario.getCampania().getEstadoCampania().equals("EN PROCESO"))
 			// Construye un objeto de Spring en base a los datos del usuario de la base de datos.
-			usuarioSpring = new User(usuario.getUsuario(), usuario.getClave(), privilegios);
-
+				usuarioSpring = new User(usuario.getUsuario(), usuario.getClave(), privilegios);
+			else
+				usuarioSpring = null;
+			
 			return usuarioSpring;
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());

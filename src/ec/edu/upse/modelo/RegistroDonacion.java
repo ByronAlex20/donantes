@@ -30,6 +30,9 @@ public class RegistroDonacion implements Serializable {
 	@Column(name="estado_donacion")
 	private String estadoDonacion;
 
+	@Column(name="id_usuario")
+	private Integer idUsuario;
+	
 	private Timestamp fecha;
 
 	private String observacion;
@@ -113,6 +116,14 @@ public class RegistroDonacion implements Serializable {
 
 	public void setPersona(Persona persona) {
 		this.persona = persona;
+	}
+
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
 	}
 
 }

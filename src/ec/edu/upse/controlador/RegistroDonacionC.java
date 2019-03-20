@@ -76,6 +76,7 @@ public class RegistroDonacionC extends SelectorComposer<Component>{
 	        			Parametrica p = (Parametrica)cboCaptado.getSelectedItem().getValue();
 	        			donacion.setParametricaCaptado(p);
 	        			donacion.setEstado("A");
+	        			donacion.setIdUsuario(Context.getInstance().getUsuarioLogeado().getIdUsuario());
 	        			donacion.setEstadoDonacion(Constantes.ULTIMA_DONACION);
 	        			Date date = new Date();
 	        			Timestamp fecha = new Timestamp(date.getTime());
@@ -145,7 +146,15 @@ public class RegistroDonacionC extends SelectorComposer<Component>{
 		return parametricaDAO.getCaptado().get(0).getParametricas();
 	}
 	public List<Campania> getListaCampania(){
-		return campaniaDAO.getListaCampania();
+		List<Campania> listaCampanias = new ArrayList<>();
+		if(Context.getInstance().getUsuarioLogeado().getSegPerfil().getDescripcion().equals("ROL_ADMINISTRADOR")) {
+			listaCampanias = campaniaDAO.getListaCampania(); 
+		}else {
+			Campania campania = new Campania();
+			campania = Context.getInstance().getUsuarioLogeado().getCampania();
+			listaCampanias.add(campania);
+		}
+		return listaCampanias;
 	}
 	public Persona getPersona() {
 		return persona;

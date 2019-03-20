@@ -49,7 +49,8 @@ public class MenuControlador {
 		loadTree();
 	}
 	public void loadTree() throws IOException{		
-		SegUsuario usuario = usuarioDAO.getUsuario(SecurityUtil.getUser().getUsername().trim()); 
+		SegUsuario usuario = usuarioDAO.getUsuario(SecurityUtil.getUser().getUsername().trim());
+
 		if (usuario != null){
 			listaPermisosPadre = permisoDAO.getListaPermisosPadre(usuario.getSegPerfil().getIdPerfil());
 			listaPermisosTodos = permisoDAO.getListaPermisosTodos(usuario.getSegPerfil().getIdPerfil());

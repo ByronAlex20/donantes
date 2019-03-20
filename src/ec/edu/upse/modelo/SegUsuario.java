@@ -1,7 +1,6 @@
 package ec.edu.upse.modelo;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -51,6 +49,8 @@ public class SegUsuario implements Serializable {
 	private String nombres;
 
 	private String observacion;
+	
+	private String correo;
 
 	private String telefono;
 
@@ -64,6 +64,10 @@ public class SegUsuario implements Serializable {
 	@JoinColumn(name="id_perfil")
 	private SegPerfil segPerfil;
 
+	@ManyToOne
+	@JoinColumn(name="id_campania")
+	private Campania campania;
+	
 	public SegUsuario() {
 	}
 
@@ -155,28 +159,20 @@ public class SegUsuario implements Serializable {
 		this.claveDesencriptada = claveDesencriptada;
 	}
 
-	//bi-directional many-to-one association to PermisoCampania
-	@OneToMany(mappedBy="segUsuario")
-	private List<PermisoCampania> permisoCampania;
-
-	public List<PermisoCampania> getPermisoCampanias() {
-		return this.permisoCampania;
+	public Campania getCampania() {
+		return campania;
 	}
 
-	public void setPermisoCampania(List<PermisoCampania> permisoCampania) {
-		this.permisoCampania = permisoCampania;
+	public void setCampania(Campania campania) {
+		this.campania = campania;
 	}
 
-	public PermisoCampania addPermisoCampania(PermisoCampania permisoCampania) {
-		getPermisoCampanias().add(permisoCampania);
-		permisoCampania.setSegUsuario(this);
-
-		return permisoCampania;
+	public String getCorreo() {
+		return correo;
 	}
 
-	public PermisoCampania removePermisoCampania(PermisoCampania permisoCampania) {
-		getPermisoCampanias().remove(permisoCampania);
-		permisoCampania.setSegUsuario(null);
-		return permisoCampania;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
+	
 }

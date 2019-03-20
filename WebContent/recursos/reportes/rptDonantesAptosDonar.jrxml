@@ -3,6 +3,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptDonantesAptos" printOrder="Horizontal" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81f1e5bc-b444-4172-85e6-54499e63bd7b">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Conexion MySQL"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
 	<parameter name="TITULO" class="java.lang.String"/>
 	<parameter name="FACULTAD" class="java.lang.String"/>
 	<parameter name="FACSISTEL" class="java.lang.String"/>
@@ -76,7 +77,7 @@ order by p.apellido asc]]>
 			<textField>
 				<reportElement x="85" y="0" width="640" height="15" uuid="aac4cf8b-4cca-4483-9abb-697c3fd059b5"/>
 				<textElement textAlignment="Center">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
 			</textField>
@@ -90,14 +91,14 @@ order by p.apellido asc]]>
 			<textField>
 				<reportElement x="85" y="33" width="640" height="15" uuid="0572f256-4800-4baf-b0d1-78eeeb8185e8"/>
 				<textElement textAlignment="Center">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{FACSISTEL}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="85" y="48" width="640" height="15" uuid="da9a2686-37af-497e-9f8b-8deb02e6f51e"/>
 				<textElement textAlignment="Center">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{PROYECTO}]]></textFieldExpression>
 			</textField>
@@ -119,7 +120,7 @@ order by p.apellido asc]]>
 			<staticText>
 				<reportElement x="0" y="-3" width="800" height="21" uuid="6b7644f9-c202-403a-a61c-0fe5c25ebf40"/>
 				<textElement textAlignment="Center">
-					<font fontName="Calibri" size="11" isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REGISTRO DE DONANTES]]></text>
 			</staticText>
@@ -130,42 +131,42 @@ order by p.apellido asc]]>
 			<staticText>
 				<reportElement x="0" y="-12" width="100" height="15" uuid="de65da94-1cc6-43ba-bb12-22453b7b317e"/>
 				<textElement>
-					<font fontName="Calibri" isBold="true"/>
+					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Campaña:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="3" width="100" height="15" uuid="03d1125b-3a52-43e2-8a4b-55503b52ba77"/>
 				<textElement>
-					<font fontName="Calibri" isBold="true"/>
+					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha de Campaña:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="480" y="3" width="100" height="15" uuid="e3c05af2-da75-4495-96ff-99c942875ff6"/>
 				<textElement>
-					<font fontName="Calibri" isBold="true"/>
+					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha de emisión:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="104" y="-12" width="376" height="15" uuid="18db606d-4932-4598-9672-3779156d0e8b"/>
 				<textElement>
-					<font fontName="Calibri"/>
+					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{CAMPANIA}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="104" y="3" width="376" height="15" uuid="6af18f16-319e-40f0-b674-c1742cb842e1"/>
 				<textElement>
-					<font fontName="Calibri"/>
+					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{FECHA_CAMPANIA}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="580" y="3" width="200" height="15" uuid="8c96c297-bfc0-4483-bc2b-061f08d62826"/>
 				<textElement>
-					<font fontName="Calibri"/>
+					<font fontName="Arial"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{FECHA_EMISION}]]></textFieldExpression>
 			</textField>
@@ -174,7 +175,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38823856-2405-4111-b13f-16cf65b821e9"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CÉDULA]]></text>
 			</staticText>
@@ -183,7 +184,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="17f6f8cc-b8e5-4a3c-b611-82ed02c807c9"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[APELLIDOS Y NOMBRES]]></text>
 			</staticText>
@@ -192,7 +193,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8f1e1c59-6601-4613-9339-9ac88432ec50"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[EDAD]]></text>
 			</staticText>
@@ -201,7 +202,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fd82b27f-2e5f-4ea6-afe3-c3941a317bc5"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SEXO]]></text>
 			</staticText>
@@ -210,7 +211,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa4d7da8-7c18-4958-83d1-fa609ee42356"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RESIDENCIA ACTUAL]]></text>
 			</staticText>
@@ -219,7 +220,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4dfd65c-ece9-4776-88eb-42948ca5ae75"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TELÉFONO CONVENCIONAL]]></text>
 			</staticText>
@@ -228,7 +229,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d39e842d-6f6f-4ba9-af34-0931dffe4c59"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CELULAR]]></text>
 			</staticText>
@@ -237,7 +238,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0b446605-1070-45d6-8266-30f446612f03"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[E-MAIL]]></text>
 			</staticText>
@@ -246,7 +247,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4263b1c6-0c03-47c8-ac76-093c8c16b561"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CAPTADO POR]]></text>
 			</staticText>
@@ -255,7 +256,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b99fd25d-35d0-43ee-b665-c58dd88961b4"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[GRUPO SANGUÍNEO]]></text>
 			</staticText>
@@ -264,7 +265,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4547b09d-1165-4605-91c6-8b1b28221090"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DONANTE]]></text>
 			</staticText>
@@ -273,7 +274,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62f44ca7-9c08-4653-8cf1-18d6fb9781f2"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DIRECCIÓN DOMICILIARIA]]></text>
 			</staticText>
@@ -288,7 +289,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38823856-2405-4111-b13f-16cf65b821e9"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="9" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NO]]></text>
 			</staticText>
@@ -301,7 +302,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="38823856-2405-4111-b13f-16cf65b821e9"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
 			</textField>
@@ -310,7 +311,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="17f6f8cc-b8e5-4a3c-b611-82ed02c807c9"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Nombre}]]></textFieldExpression>
 			</textField>
@@ -319,7 +320,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8f1e1c59-6601-4613-9339-9ac88432ec50"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{edad}]]></textFieldExpression>
 			</textField>
@@ -328,7 +329,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fd82b27f-2e5f-4ea6-afe3-c3941a317bc5"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
 			</textField>
@@ -337,7 +338,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fa4d7da8-7c18-4958-83d1-fa609ee42356"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ciudad}]]></textFieldExpression>
 			</textField>
@@ -346,7 +347,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4dfd65c-ece9-4776-88eb-42948ca5ae75"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{telefono}]]></textFieldExpression>
 			</textField>
@@ -355,7 +356,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d39e842d-6f6f-4ba9-af34-0931dffe4c59"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{celular}]]></textFieldExpression>
 			</textField>
@@ -364,7 +365,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0b446605-1070-45d6-8266-30f446612f03"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
 			</textField>
@@ -373,7 +374,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4263b1c6-0c03-47c8-ac76-093c8c16b561"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{captado}]]></textFieldExpression>
 			</textField>
@@ -382,7 +383,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b99fd25d-35d0-43ee-b665-c58dd88961b4"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sangre}]]></textFieldExpression>
 			</textField>
@@ -391,7 +392,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4547b09d-1165-4605-91c6-8b1b28221090"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
 			</textField>
@@ -400,7 +401,7 @@ order by p.apellido asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="62f44ca7-9c08-4653-8cf1-18d6fb9781f2"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{direccion}]]></textFieldExpression>
 			</textField>
@@ -452,7 +453,7 @@ order by p.apellido asc]]>
 			<textField>
 				<reportElement x="-5" y="0" width="34" height="23" uuid="79ecbf2a-9cc4-48f7-9434-d7674f5eb815"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
@@ -469,7 +470,7 @@ order by p.apellido asc]]>
 			<staticText>
 				<reportElement x="13" y="3" width="567" height="45" uuid="27fd48a8-d33d-4277-9a95-7ef68564e24a"/>
 				<textElement>
-					<font fontName="Calibri" size="7"/>
+					<font fontName="Arial" size="7"/>
 				</textElement>
 				<text><![CDATA[FACSISTEL
 DIRECCIÓN: Vía La Libertad-Santa Elena
@@ -480,7 +481,7 @@ www.facsistel.upse.edu.ec]]></text>
 			<textField>
 				<reportElement x="711" y="4" width="100" height="10" uuid="75355a70-65e8-462a-a7e0-e351623936ec"/>
 				<textElement textAlignment="Right">
-					<font fontName="Calibri" size="8"/>
+					<font fontName="Arial" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>

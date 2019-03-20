@@ -11,7 +11,6 @@
 		<class>ec.edu.upse.modelo.SegPerfil</class>
 		<class>ec.edu.upse.modelo.SegPermiso</class>
 		<class>ec.edu.upse.modelo.SegUsuario</class>
-		<class>ec.edu.upse.modelo.PermisoCampania</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/donantes"/>
 			<property name="javax.persistence.jdbc.user" value="root"/>
