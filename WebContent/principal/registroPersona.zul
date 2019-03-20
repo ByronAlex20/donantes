@@ -134,20 +134,9 @@
 							<cell>
 								<textbox id="txtDireccion" width="90%" />
 							</cell>
-							<cell sclass="row-title">
-								Grupo Sanguineo :
+							<cell sclass="row-title" colspan="2" align="center">
+								Lugar de residencia
 							</cell>
-							<cell>
-								<combobox id="cboGrupoSanguineo"
-									width="90%" model="@{winRegistro$composer.grupoSanguineo}"
-									readonly="true">
-									<template name="model">
-										<comboitem
-											label="${each.descripcion}" />
-									</template>
-								</combobox>
-							</cell>
-
 						</row>
 						<row>
 							<cell sclass="row-title">Tatuaje :</cell>
@@ -183,6 +172,21 @@
 							<cell>
 								<combobox id="cboCiudad" width="90%"
 									model="@{winRegistro$composer.ciudades}" readonly="true">
+									<template name="model">
+										<comboitem
+											label="${each.descripcion}" />
+									</template>
+								</combobox>
+							</cell>
+						</row>
+						<row>
+							<cell sclass="row-title">
+								Tipo de Sangre:
+							</cell>
+							<cell>
+								<combobox id="cboGrupoSanguineo"
+									width="90%" model="@{winRegistro$composer.grupoSanguineo}"
+									readonly="true">
 									<template name="model">
 										<comboitem
 											label="${each.descripcion}" />

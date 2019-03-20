@@ -54,7 +54,7 @@ public class PrintReport {
 			
 			// Obtiene un nombre aleatorio para el reporte
 			nombreArchivo = nombreArchivo + "/" + UUID.randomUUID().toString() + ".pdf";
-			Messagebox.show("nombre de ruta y archivo: " + nombreArchivo);
+			//Messagebox.show("nombre de ruta y archivo: " + nombreArchivo);
 			
 			
 			
