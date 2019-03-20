@@ -122,9 +122,12 @@ public class UsuarioRegistroC extends SelectorComposer<Component>{
 		usuario.setUsuario(txtUsuario.getText());
 		usuario.setCorreo(txtCorreo.getText());
 		SegPerfil pPerfil = (SegPerfil)cboPerfil.getSelectedItem().getValue();
-		Campania pCampania = (Campania)cboCampania.getSelectedItem().getValue();
+		
 		usuario.setSegPerfil(pPerfil);
-		usuario.setCampania(pCampania);
+		if(cboCampania.getSelectedItem().getValue() != null) {
+			Campania pCampania = (Campania)cboCampania.getSelectedItem().getValue();
+			usuario.setCampania(pCampania);
+		}
 		usuario.setClave(helper.encriptar(txtClave.getText()));
 		usuario.setClaveDesencriptada(txtClave.getText());
 		usuario.setObservacion(txtObservacion.getText());
