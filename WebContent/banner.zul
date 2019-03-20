@@ -7,9 +7,9 @@
 		<separator orient="vertical" width="50%"/>
 		<hbox pack="start" align="start" hflex="1">
 			<vbox pack="start">
-				<label style="font: 100% sans-serif;color:white" value="Sistema de registro de Donantes de Sangre"/>
-				<label style="font: 80% sans-serif;color:white" value="Facultad de sistemas y telecomunicaciones"/>
-				<label style="font: 80% sans-serif;color:white" value="Proyecto de vinculación con la sociedad"/>
+				<label style="font: 100% sans-serif;color:white" value="SISTEMA DE REGISTRO DE DONANTES DE SANGRE"/>
+				<label style="font: 80% sans-serif;color:white" value="FACULTAD DE SISTEMAS Y TELECOMUNICACIONES"/>
+				<label style="font: 80% sans-serif;color:white" value="PROYECTO DE VINCULACIÓN CON LA SOCIEDAD"/>
 			</vbox>
 		</hbox>
 		<hbox hflex= "1" vflex="1" pack="end" align="center">

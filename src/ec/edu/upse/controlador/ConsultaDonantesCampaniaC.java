@@ -198,6 +198,14 @@ public class ConsultaDonantesCampaniaC extends SelectorComposer<Component>{
 			System.out.println(ex.getMessage());
 		}
 	}
+	@Listen("onClick=#btnTotales")
+	public void totales(){
+		try {
+			
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
 	private BufferedImage createImageFromBytes(byte[] imageData) {
 		ByteArrayInputStream bite = new ByteArrayInputStream(imageData);
 		try {

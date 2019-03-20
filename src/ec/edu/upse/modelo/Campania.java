@@ -3,6 +3,7 @@ package ec.edu.upse.modelo;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 

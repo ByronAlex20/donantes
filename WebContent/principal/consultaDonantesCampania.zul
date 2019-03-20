@@ -23,7 +23,7 @@
 										model="@{winReporteCampania$composer.listaCampania}" width="100%" readonly="true">
 										<template name="model">
 											<comboitem
-												label="${each.nombreCampania} - ${each.lugar}" />
+												label="${each.nombreCampania} - ${each.lugar}    (${each.fecha})" />
 										</template>
 									</combobox>
 								</cell>
@@ -34,6 +34,10 @@
 								<cell width="min">
 									<button id="btnImprimir"
 										label="Imprimir"  />
+								</cell>
+								<cell width="min">
+									<button id="btnTotales"
+										label="Totales"  />
 								</cell>
 							</row>
 						</rows>
